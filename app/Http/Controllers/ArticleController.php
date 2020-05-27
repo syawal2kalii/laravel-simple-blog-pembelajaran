@@ -13,7 +13,14 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('article');
+        $article = [
+            'judul' => 'indonesia darurat corona',
+            'content' => 'lorem ipsum ',
+        ];
+
+        return view('article',compact('article'));
+//        ex1
+//        return view('article')->with(['judul' => 'indonesia darurat corona','content' => 'lorem ipsum ']);
     }
 
     /**

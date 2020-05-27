@@ -8,6 +8,12 @@
     <title>Article</title>
 </head>
 <body>
-    <h1>Article</h1>
+{{--    ex1--}}
+{{--    <h1>{{$judul}}</h1>--}}
+{{--    <span>{{$content}}</span>--}}
+{{--    ex2--}}
+    <h1>{{$article['judul']}}</h1>
+    <span>{{$article['content']}}</span>
+
 </body>
 </html>
