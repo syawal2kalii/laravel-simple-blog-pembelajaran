@@ -29,3 +29,4 @@ Route::get('/hello-html', function (){
 
 //route with controller
 Route::get('/article','ArticleController@index');
+Route::get('/article/{id}','ArticleController@getArticleById');

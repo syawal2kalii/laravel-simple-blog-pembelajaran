@@ -88,4 +88,8 @@ class ArticleController extends Controller
     {
         //
     }
+
+    public function getArticleById($id){
+        return "article dengan id ".$id;
+    }
 }
