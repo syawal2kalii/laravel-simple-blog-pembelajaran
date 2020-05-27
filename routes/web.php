@@ -24,6 +24,6 @@ Route::get('/hello', function (){
 
 // return view (html)
 Route::get('/hello-html', function (){
-    return view('helloworld');
+    return view('helloworld');//note : buat html di resources/views
 });
 
