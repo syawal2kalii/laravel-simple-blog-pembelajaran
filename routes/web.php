@@ -27,3 +27,5 @@ Route::get('/hello-html', function (){
     return view('helloworld');//note : buat html di resources/views
 });
 
+//route with controller
+Route::get('/article','ArticleController@index');
