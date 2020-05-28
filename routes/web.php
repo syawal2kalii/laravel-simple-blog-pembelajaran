@@ -32,6 +32,10 @@ Route::get('/article','ArticleController@index');
 Route::get('/article/{id}','ArticleController@getArticleById');
 
 //_5_templating
-Route::get('/templating',function (){
+Route::get('/about',function (){
     return view('about');
+});
+
+Route::get('/home',function (){
+    return view('home');
 });
