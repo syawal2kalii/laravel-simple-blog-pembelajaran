@@ -30,3 +30,8 @@ Route::get('/hello-html', function (){
 //route with controller
 Route::get('/article','ArticleController@index');
 Route::get('/article/{id}','ArticleController@getArticleById');
+
+//_5_templating
+Route::get('/templating',function (){
+    return view('about');
+});
