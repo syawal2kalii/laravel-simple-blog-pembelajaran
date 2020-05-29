@@ -1,0 +1,38 @@
+Eloquent menggunakan tinker
+    commands:
+        -php artisan tinker
+
+# defisikan model
+$user = App\user;
+$category = App\category;
+$article = App\article;
+
+# menampilkan isi table
+$user::all();
+
+# create data (query builder)
+$category->nama='lifestyle';
+$category->save();
+
+# create data (Eloquent)
+$category::create([
+    'nama'=>'lifestyle';
+]);
+
+#find data by id
+$category::find(4)
+
+#delete data
+$category::find(4)->delete();
+
+#where
+$category::where('nama','politik')->delete();
+
+#multiple where
+$category::where('nama','politik')->where('id',2)->get();
+
+# || where
+$category::where('nama','politik')->orWhere('id',2)->get();
+
+# update
+$category::where('nama','politik')->update(['nama'=>'political']);
