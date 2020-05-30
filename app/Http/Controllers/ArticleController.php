@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -13,12 +15,16 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = [
-            'judul' => 'indonesia darurat corona',
-            'content' => 'lorem ipsum ',
-        ];
+//        Data dummy
+//       nsdddddd   q3  $article = [
+//            'judul' => 'indonesia darurat corona',
+//            'content' => 'lorem ipsum ',
+//        ];
 
-        return view('article',compact('article'));
+//      Data dari database
+        $articles = Article::all();
+        return view('article.articles',compact('articles'));
+
 //        ex1
 //        return view('article')->with(['judul' => 'indonesia darurat corona','content' => 'lorem ipsum ']);
     }
@@ -26,11 +32,13 @@ class ArticleController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * =
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $category=Category::all();
+        return view('article.article-create',compact('category'));
     }
 
     /**
