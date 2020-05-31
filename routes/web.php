@@ -44,8 +44,6 @@ Route::get('/wildcard-url/{id}','ArticleController@wildcard'); // wildcard
 Route::get('list-users','UserController@index');
 Route::get('/list-users/{user}','UserController@allusers')->name('list-users');
 
-
-
 //Auth
 Route::get('/home',function (){
     return view('home');
