@@ -79,9 +79,10 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        $category = Category::all();
+        return view('article.article-edit',compact('article','category'));
     }
 
     /**

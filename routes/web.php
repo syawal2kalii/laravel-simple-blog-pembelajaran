@@ -49,6 +49,6 @@ Route::get('/articles','ArticleController@index'); // tanpa namespace
 Route::get('/article/create','ArticleController@create')->name('article.create'); // route untuk menampilkan Form create menggunakan namespace
 Route::post('/article/store','ArticleController@store')->name('article.store'); // route untuk menyimpan ke db
 Route::get('/article/delete/{slug}','ArticleController@destroy')->name('article.destroy'); // route untuk delete
-Route::post('/article/edit','ArticleController@show')->name('article.edit'); // route untuk menampilkan form edit/update
+Route::get('/article/edit/{article}','ArticleController@edit')->name('article.edit'); // route untuk menampilkan form edit/update
 Route::post('/article/update','ArticleController@update')->name('article.update'); // route untuk update
 Route::get('/article/{article}','ArticleController@detail')->name('article.detail');
