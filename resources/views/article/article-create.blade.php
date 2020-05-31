@@ -23,7 +23,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="my-textarea">Content</label>
-                                <textarea name="content" id="my-textarea" cols="30" rows="10" class="form-control"
+                                <textarea name="contentt" id="my-textarea" cols="30" rows="10" class="form-control"
                                           placeholder="content"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">OK</button>

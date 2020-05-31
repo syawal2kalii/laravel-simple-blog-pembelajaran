@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use App\Category;
+use foo\bar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class ArticleController extends Controller
 {
@@ -49,7 +52,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Article::create([
+            'title' => $request->title,
+            'cat_id'=> $request->category,
+            'content'=> $request->contentt,
+            'slug' => \Str::slug($request->title).'-'.\Str::random(10),
+            'user_id' => 1 //sementara
+        ]);
+        return back();
     }
 
     /**
