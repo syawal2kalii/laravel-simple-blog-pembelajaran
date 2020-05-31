@@ -102,12 +102,17 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        Article::where('slug',$slug)->delete();
+        return redirect('/articles');
     }
 
     public function getArticleById($id){
         return "article dengan id ".$id;
+    }
+
+    public function detail(Article $article){
+        return view('article.article-detail',compact('article'));
     }
 }
