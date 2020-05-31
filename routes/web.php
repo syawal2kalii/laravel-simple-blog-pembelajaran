@@ -36,14 +36,20 @@ Route::get('/about',function (){
     return view('about');
 });
 
+// 10_passing data melalui request dan route wildcard
+Route::get('/request-passing/',function (){
+    return "nama : ".request('nama');
+});
+Route::get('/wildcard-url/{id}','ArticleController@wildcard'); // wildcard
+Route::get('list-users','UserController@index');
+Route::get('/list-users/{user}','UserController@allusers')->name('list-users');
+
+
+
+//Auth
 Route::get('/home',function (){
     return view('home');
 });
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

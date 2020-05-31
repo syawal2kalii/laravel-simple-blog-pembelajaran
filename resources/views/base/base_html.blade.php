@@ -10,7 +10,6 @@
     <title>@yield('title')</title>
 </head>
 <body>
-
     @include('base.navbar')
     @yield('content')
     {{-- import boostrap javascript    --}}
