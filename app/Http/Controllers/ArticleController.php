@@ -52,6 +52,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
         Article::create([
             'title' => $request->title,
             'cat_id'=> $request->category,
@@ -92,9 +93,17 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Article $article)
     {
-        //
+        $attr = [
+            'title'=> request()->title,
+            'cat_id'=> request()->category,
+            'content'=>request()->contentt,
+            'slug'=> Str::slug(request()->title).'-'.Str::random(10)
+        ];
+        $article->update($attr);
+        return redirect('/articles');
+
     }
 
     /**

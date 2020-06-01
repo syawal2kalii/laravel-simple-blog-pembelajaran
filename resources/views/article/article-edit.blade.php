@@ -23,7 +23,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="my-textarea">Content</label>
-                                <textarea name="content" class="form-control" rows="5" placeholder="Desciption">{{$article->content}}</textarea>
+                                <textarea name="contentt" class="form-control" rows="5" placeholder="Desciption">{{$article->content}}</textarea>
                             </div>
                             <button type="submit" class="btn btn-outline-primary">OK</button>
                         </div>
