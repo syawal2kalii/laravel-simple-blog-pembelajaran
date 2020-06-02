@@ -52,14 +52,15 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-
-        Article::create([
-            'title' => $request->title,
-            'cat_id'=> $request->category,
-            'content'=> $request->contentt,
-            'slug' => \Str::slug($request->title).'-'.\Str::random(10),
-            'user_id' => 1 //sementara
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'cat_id'=> 'required',
+            'content'=> 'required',
         ]);
+        $validatedData['slug'] = \Str::slug($request->title).'-'.\Str::random(10);
+        $validatedData['user_id'] = 1;
+//        dd($validatedData);
+        Article::create($validatedData);
         return back();
     }
 
@@ -95,14 +96,20 @@ class ArticleController extends Controller
      */
     public function update(Article $article)
     {
-        $attr = [
-            'title'=> request()->title,
-            'cat_id'=> request()->category,
-            'content'=>request()->contentt,
-            'slug'=> Str::slug(request()->title).'-'.Str::random(10)
-        ];
-        $article->update($attr);
-        return redirect('/articles');
+        $validatedData = request()->validate([
+            'title' => 'required|max:255',
+            'cat_id' => 'required',
+            'content'=> 'required'
+        ]);
+        $validatedData['slug'] = Str::slug(request()->title).'-'.Str::random(10);
+//        $attr = [
+//            'title'=> request()->title,
+//            'cat_id'=> request()->category,
+//            'content'=>request()->contentt,
+//            'slug'=> Str::slug(request()->title).'-'.Str::random(10)
+//        ];
+        $article->update($validatedData);
+        return redirect('/articles')->with('notification','data berhasil di update');
 
     }
 

@@ -2,6 +2,12 @@
 @section('title','Article')
 @section('content')
     <div class="container">
+        @if(session()->has('notification'))
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>{{session()->get('notification')}}</strong>
+            </div>
+        @endif
         <div class="row justify-content-start">
             @foreach($articles as $article)
                 <div class="col-md-4 mt-2 ">
