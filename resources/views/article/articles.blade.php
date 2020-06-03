@@ -22,5 +22,7 @@
                 </div>
             @endforeach
         </div>
+            {{$articles->links()}}
     </div>
+
 @endsection

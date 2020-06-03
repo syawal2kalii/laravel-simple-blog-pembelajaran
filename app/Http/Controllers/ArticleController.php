@@ -33,7 +33,9 @@ class ArticleController extends Controller
 
 //      Data dari database
 
-        $articles = Article::all();
+
+//        $articles = Article::all();
+        $articles = Article::paginate(6);
         return view('article.articles',compact('articles'));
 
 //        ex1
