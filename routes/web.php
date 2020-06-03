@@ -28,7 +28,7 @@ Route::get('/hello-html', function (){
 });
 
 //route with controller
-Route::get('/article','ArticleController@index');
+//Route::get('/article','ArticleController@index');
 //Route::get('/article/{id}','ArticleController@getArticleById');
 
 //_5_templating
@@ -45,10 +45,15 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Article
+Route::group(['middleware'=>['user']],function(){
+    Route::get('/article/create','ArticleController@create')->name('article.create'); // route untuk menampilkan Form create menggunakan namespace
+    Route::post('/article/store','ArticleController@store')->name('article.store'); // route untuk menyimpan ke db
+    Route::get('/article/delete/{slug}','ArticleController@destroy')->name('article.destroy'); // route untuk delete
+    Route::get('/article/edit/{article}','ArticleController@edit')->name('article.edit'); // route untuk menampilkan form edit/update
+    Route::post('/article/update/{article}','ArticleController@update')->name('article.update'); // route untuk update
+    Route::get('/articles','ArticleController@index'); // tanpa namespace
+    Route::get('/article/{article}','ArticleController@detail')->name('article.detail');
+});
+
 Route::get('/articles','ArticleController@index'); // tanpa namespace
-Route::get('/article/create','ArticleController@create')->name('article.create'); // route untuk menampilkan Form create menggunakan namespace
-Route::post('/article/store','ArticleController@store')->name('article.store'); // route untuk menyimpan ke db
-Route::get('/article/delete/{slug}','ArticleController@destroy')->name('article.destroy'); // route untuk delete
-Route::get('/article/edit/{article}','ArticleController@edit')->name('article.edit'); // route untuk menampilkan form edit/update
-Route::post('/article/update/{article}','ArticleController@update')->name('article.update'); // route untuk update
 Route::get('/article/{article}','ArticleController@detail')->name('article.detail');

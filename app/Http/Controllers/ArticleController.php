@@ -6,11 +6,18 @@ use App\Article;
 use App\Category;
 use foo\bar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 
 class ArticleController extends Controller
 {
+
+//    public function __construct()
+//    {
+//        $this->middleware(['user']);
+//    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +32,7 @@ class ArticleController extends Controller
 //        ];
 
 //      Data dari database
+
         $articles = Article::all();
         return view('article.articles',compact('articles'));
 
@@ -58,7 +66,7 @@ class ArticleController extends Controller
             'content'=> 'required',
         ]);
         $validatedData['slug'] = \Str::slug($request->title).'-'.\Str::random(10);
-        $validatedData['user_id'] = 1;
+        $validatedData['user_id'] = Auth::user()->id ;
 //        dd($validatedData);
         Article::create($validatedData);
         return back();
