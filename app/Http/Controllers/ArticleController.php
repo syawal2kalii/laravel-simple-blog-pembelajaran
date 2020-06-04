@@ -68,9 +68,10 @@ class ArticleController extends Controller
             'content'=> 'required',
         ]);
         $validatedData['slug'] = \Str::slug($request->title).'-'.\Str::random(10);
-        $validatedData['user_id'] = Auth::user()->id ;
 //        dd($validatedData);
-        Article::create($validatedData);
+//        $validatedData['user_id'] = Auth::user()->id ;
+//        Article::create($validatedData);
+        Auth::user()->articles()->create($validatedData);
         return back();
     }
 
