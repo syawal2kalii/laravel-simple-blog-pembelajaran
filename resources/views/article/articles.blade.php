@@ -14,7 +14,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{$article->title}}</h5>
-                            <h6 class="card-subtitle mb-2">{{$article->created_at->diffForHumans()}}</h6>
+                            <h6 class="card-subtitle mb-2">{{$article->created_at->diffForHumans()." By ".$article->user->name}}</h6>
                             <p class="card-text">{{$article->content}}</p>
                             <a href="{{route('article.detail',$article)}}">Read More</a>
                         </div>

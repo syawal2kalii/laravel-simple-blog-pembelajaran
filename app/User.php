@@ -37,6 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function articles(){
+        return $this->hasMany(Article::class, 'user_id');
+    }
+
     public function isAdmin(){
         if($this->role_id == 2) return true;
         return false;
@@ -46,4 +50,5 @@ class User extends Authenticatable
         if($this->role_id == 1) return true;
         return false;
     }
+
 }
