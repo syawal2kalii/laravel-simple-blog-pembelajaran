@@ -7,8 +7,10 @@
                 <h1>{{$article->title}}</h1>
                 <span>{{$article->content}}</span> <br>
                 <small>posted by {{$article->user->name}}</small><br>
-                <a href="{{route('article.destroy',$article->slug)}}" class="btn btn-outline-warning" type="button">Delete</a>
-                <a href="{{route('article.edit',$article)}}" class="btn btn-outline-primary" type="button">Edit</a>
+{{--                @can('update',$article)--}}
+                    <a href="{{route('article.destroy',$article->slug)}}" class="btn btn-outline-warning" type="button">Delete</a>
+                    <a href="{{route('article.edit',$article)}}" class="btn btn-outline-primary" type="button">Edit</a>
+{{--                @endcan--}}
             </div>
         </div>
     </div>

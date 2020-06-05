@@ -94,6 +94,11 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+//        tanpa policy
+//        if($article->user_id != Auth::id()){
+//            abort(403);
+//        }
+        $this->authorize('update',$article);
         $category = Category::all();
         return view('article.article-edit',compact('article','category'));
     }
@@ -107,6 +112,7 @@ class ArticleController extends Controller
      */
     public function update(Article $article)
     {
+
         $validatedData = request()->validate([
             'title' => 'required|max:255',
             'cat_id' => 'required',
